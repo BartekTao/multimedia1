@@ -24,7 +24,9 @@ m_gray.save("gray.jpg")
 #m_gray.show()
 
 
-for y in range(m_gray.size[1]):
+#######################
+
+'''for y in range(m_gray.size[1]):
     for x in range(m_gray.size[0]):
       oldpixel = m_gray.getpixel((x,y))
       #print(oldpixel)
@@ -33,13 +35,39 @@ for y in range(m_gray.size[1]):
       else:
           newpixel = 255
       m_gray.putpixel((x, y), newpixel)
-      quant_error  = oldpixel - newpixel
-      '''a = m_gray.getpixel((x + 1, y)) + quant_error * 7 / 16
-      m_gray.putpixel((x + 1, y), 12)
-      m_gray.putpixel((x - 1, y + 1), m_gray.getpixel((x - 1, y + 1)) + quant_error * 3 / 16)
-      m_gray.putpixel((x, y + 1), m_gray.getpixel((x, y + 1)) + quant_error * 7 / 16)
-      m_gray.putpixel((x + 1, y + 1), m_gray.getpixel((x + 1, y + 1)) + quant_error * 7 / 16)'''
 
-m_gray.show()
+m_gray.show()'''
+
+#####################Halftone
+m_gray_map = Image.new("L", ((image_in.size[0]//8)*8,(image_in.size[1]//8)*8))
+
+map = ((0,128,32,160,8,136,40,168),
+       (192,64,224,96,200,72,232,104),
+       (48,176,16,144,56,184,24,152),
+       (240,112,208,80,248,120,216, 88),
+       (12,140,44,172,4,132,36,164),
+       (204,76,236,108,196,68,228,100),
+       (60,188,28,156,52,180,20,148),
+       (252,124,220,92,244,116,212,84))
+
+m_size = (image_in.size[0]//8)*(image_in.size[1]//8)
+
+for Y in range(0, (image_in.size[1] // 8)):
+    for X in range(0, (image_in.size[0] // 8)):
+        for y in range(Y * 8, (Y + 1) * 8):
+            for x in range(X * 8, (X + 1) * 8):
+                if (m_gray.getpixel((x, y)) > map[Y % 8][X % 8]):
+                    m_gray_map.putpixel((x, y), 255)
+                else:
+                    m_gray_map.putpixel((x, y), 0)
+m_gray_map.show()
+
+
+
+
+
+##for y in range(m_gray.size[1]):
+    ##for x in range(m_gray.size[0]):
+
 
 
