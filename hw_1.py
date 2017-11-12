@@ -38,8 +38,9 @@ m_gray.save("gray.jpg")
 
 m_gray.show()'''
 
-#####################Halftone
-m_gray_map = Image.new("L", ((image_in.size[0]//8)*8,(image_in.size[1]//8)*8))
+#Halftone#################
+m_gray = image_in.convert("L")
+'''m_gray_map = Image.new("L", ((image_in.size[0]//8)*8,(image_in.size[1]//8)*8))
 
 map = ((0,128,32,160,8,136,40,168),
        (192,64,224,96,200,72,232,104),
@@ -60,14 +61,24 @@ for Y in range(0, (image_in.size[1] // 8)):
                     m_gray_map.putpixel((x, y), 255)
                 else:
                     m_gray_map.putpixel((x, y), 0)
-m_gray_map.show()
+m_gray_map.show()'''
 
+#Floyd_Steinberg############
+m_gray_Floyd = Image.new("L", image_in.size)
 
-
-
-
-##for y in range(m_gray.size[1]):
-    ##for x in range(m_gray.size[0]):
-
-
-
+for y in range(m_gray.size[1]):
+    for x in range(m_gray.size[0]):
+        try:
+            if (m_gray.getpixel((x, y)) < 128):
+                m_gray_Floyd.putpixel((x, y), 0)
+            else:
+                m_gray_Floyd.putpixel((x, y), 255)
+            delta = m_gray.getpixel((x, y)) - m_gray_Floyd.getpixel((x, y))
+            m_gray.putpixel((x, y), m_gray_Floyd.getpixel((x, y)))
+            m_gray.putpixel((x + 1, y), round(m_gray.getpixel((x + 1, y)) + delta * 7 / 16))
+            m_gray.putpixel((x - 1, y + 1), round(m_gray.getpixel((x - 1, y + 1)) + delta * 3 / 16))
+            m_gray.putpixel((x, y + 1), round(m_gray.getpixel((x, y + 1)) + delta * 5 / 16))
+            m_gray.putpixel((x + 1, y + 1), round(m_gray.getpixel((x + 1, y + 1)) + delta / 16))
+        except Exception as e:
+            massage = "過濾超過的index"
+m_gray_Floyd.show()
