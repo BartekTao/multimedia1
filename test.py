@@ -10,16 +10,20 @@ fs = 8000      # sampling rate, Hz, must be integer
 duration = 5.0   # in seconds, may be float
 f = 262.0        # sine frequency, Hz, may be float
 f2= 65.0
+f3= 1.0
 
-samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
-samples2 = (np.sin(2*np.pi*np.arange(fs*duration)*f2/fs)).astype(np.float32)
-samples = samples + samples2
-
-print("Data type", samples.dtype,"--", "Shape", samples.shape)
-
-#新数据
-
+#samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
+samples = 2*np.pi*np.arange(fs*duration)  #*f/fs)).astype(np.float32)
+a = np.arange(fs*duration)
+print(len(samples))
+for i in range (len(samples)):
+    if i >=0 and i<=20000:
+        samples[i] = np.sin(samples[i] * 1 / fs).astype(np.float32)
+    else:
+        samples[i] = np.sin(samples[i] * f / fs).astype(np.float32)
+#samples2 = (np.sin(2*np.pi*np.arange(fs*duration)*f2/fs)).astype(np.float32)
 newdata = volume*samples.astype(np.float32)
+print(samples)
 print ("Data type", newdata.dtype,"--", "Shape", newdata.shape)
 
 scipy.io.wavfile.write("quiet.wav",fs, newdata)
