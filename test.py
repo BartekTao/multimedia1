@@ -26,10 +26,10 @@ newdata = volume*samples.astype(np.float32)
 print(samples)
 print ("Data type", newdata.dtype,"--", "Shape", newdata.shape)
 
-scipy.io.wavfile.write("quiet.wav",fs, newdata)
+scipy.io.wavfile.write("test.wav",fs, newdata)
 #新图像
 plt.subplot(2, 1, 2)
-plt.title("Quiet")
+plt.title("test")
 plt.plot(newdata)
 
 plt.show()
