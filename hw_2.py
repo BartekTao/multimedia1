@@ -84,15 +84,83 @@ setMusic(15,f3)
 setMusic(16,f3)
 setSleep(16)
 
+newdata = 0.5*samples.astype(np.float32)
+
+f1 = 65.0        # sine frequency, Hz, may be float
+f2 = 73.0
+f3 = 82.0
+f5 = 98.0
+
+samples2 = 2*np.pi*np.arange(fs*duration)
+
+def setMusic(n, f):
+    n = n * time
+    for i in range(int((n - time) * fs), int(fs * n)):
+        samples2[i] = np.sin(samples2[i] * f / fs).astype(np.float32)
+
+def setSleep(n):
+    n = n * time
+    for i in range(int(fs * n - fs / sleep), int(fs * n)):
+        samples2[i] = np.sin(samples2[i] * f0 / fs).astype(np.float32)
+
+setMusic(1,f3)
+setSleep(1)
+
+setMusic(2,f3)
+setSleep(2)
+
+setMusic(3,f3)
+
+setMusic(4,f3)
+setSleep(4)
+
+setMusic(5,f3)
+setSleep(5)
+
+setMusic(6,f3)
+setSleep(6)
+
+setMusic(7,f3)
+
+setMusic(8,f3)
+setSleep(8)
+
+setMusic(9,f3)
+setSleep(9)
+
+setMusic(10,f5)
+setSleep(10)
+
+setMusic(11,f1)
+setSleep(11)
+
+setMusic(12,f2)
+setSleep(12)
+
+setMusic(13,f3)
+
+setMusic(14,f3)
+
+setMusic(15,f3)
+
+setMusic(16,f3)
+setSleep(16)
 
 
+newdata2 = 0.5*samples2.astype(np.float32)
 
-newdata = volume*samples.astype(np.float32)
-
-scipy.io.wavfile.write("sample1.wav",fs, newdata)
+scipy.io.wavfile.write("sample1.wav",fs, newdata + newdata2)
 #新图像
-plt.subplot(2, 1, 1)
+plt.subplot(3, 1, 1)
 plt.title("main")
 plt.plot(newdata)
+
+plt.subplot(3, 1, 2)
+plt.title("second")
+plt.plot(newdata2)
+
+plt.subplot(3, 1, 3)
+plt.title("second")
+plt.plot(newdata + newdata2)
 
 plt.show()
