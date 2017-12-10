@@ -12,7 +12,7 @@ except Exception as e:
     print("路徑錯誤")'''
 #不使用讀取txt功能，因為音樂有一拍、半拍、三連音...等等，txt較難統一、辨別以上所述的分類
 ############
-sleep = 30
+sleep = 15
 time = 0.4
 
 volume = 0.5     # range [0.0, 1.0]
