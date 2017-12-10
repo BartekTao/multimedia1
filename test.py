@@ -4,27 +4,22 @@ import matplotlib.pyplot as plt
 from urllib import request
 import numpy as np
 
-url = 'http://www.thesoundarchive.com/austinpowers/smashingbaby.wav'
-response = request.urlopen(url)
-print (response.info())
-WAV_FILE = 'smashingbaby.wav'
-#二进制方式打开
-filehandle = open(WAV_FILE, 'wb+')
-filehandle.write(response.read())
-filehandle.close()
-sample_rate, data = scipy.io.wavfile.read(WAV_FILE)
-print ("Data type", data.dtype,"--", "Shape", data.shape)
-#原始图
-plt.subplot(2, 1, 1)
-plt.title("Original")
-plt.plot(data)
+
+volume = 0.5     # range [0.0, 1.0]
+fs = 8000      # sampling rate, Hz, must be integer
+duration = 5.0   # in seconds, may be float
+f = 100.0        # sine frequency, Hz, may be float
+
+samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
+
+print("Data type", samples.dtype,"--", "Shape", samples.shape)
+
 #新数据
-newdata = data * 0.2
-newdata = newdata.astype(np.uint8)
+
+newdata = volume*samples.astype(np.float32)
 print ("Data type", newdata.dtype,"--", "Shape", newdata.shape)
 
-scipy.io.wavfile.write("quiet.wav",
-    sample_rate, newdata)
+scipy.io.wavfile.write("quiet.wav",fs, newdata)
 #新图像
 plt.subplot(2, 1, 2)
 plt.title("Quiet")
