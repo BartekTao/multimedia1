@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c92f738-a7db-4c39-8fbd-7ad12ec54542" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assigment2/test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assigment2/hw_2.py" afterPath="$PROJECT_DIR$/Assigment2/hw_2.py" />
     </list>
@@ -13,8 +14,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/$test.coverage" NAME="test Coverage Results" MODIFIED="1512890989957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assigment2" />
     <SUITE FILE_PATH="coverage/$hw_1.coverage" NAME="hw_1 Coverage Results" MODIFIED="1510501214454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/$hw_2.coverage" NAME="hw_2 Coverage Results" MODIFIED="1512814439564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assigment2" />
+    <SUITE FILE_PATH="coverage/$hw_2.coverage" NAME="hw_2 Coverage Results" MODIFIED="1512890967926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assigment2" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -32,13 +34,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hw_2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hw_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assigment2/hw_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="10" />
+            <state relative-caret-position="292">
+              <caret line="29" column="69" lean-forward="true" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
               <folding>
                 <element signature="e#121#132#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assigment2/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+              <folding>
+                <element signature="e#22#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,6 +75,7 @@
       <list>
         <option value="$PROJECT_DIR$/hw_1.py" />
         <option value="$PROJECT_DIR$/Assigment2/hw_2.py" />
+        <option value="$PROJECT_DIR$/Assigment2/test.py" />
       </list>
     </option>
   </component>
@@ -110,7 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hw_2">
+  <component name="RunManager" selected="Python.test">
     <configuration name="hw_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,14 +162,34 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="2">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assigment2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="影像處理" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assigment2/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.hw_1" />
       <item index="1" class="java.lang.String" itemvalue="Python.hw_2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.hw_2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.hw_1" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.hw_2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.hw_1" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512393704587</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="測試pyaudio">
+      <created>1512819659850</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1512819659850</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -260,7 +302,8 @@
     <MESSAGE value="Floyd–Steinberg" />
     <MESSAGE value="測試半色調矩陣結合Floyd-Steinberg + 最後調整 + 輸出" />
     <MESSAGE value="測試level2部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="測試level2部分" />
+    <MESSAGE value="測試pyaudio" />
+    <option name="LAST_COMMIT_MESSAGE" value="測試pyaudio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -305,10 +348,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assigment2/hw_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="10" />
+        <state relative-caret-position="292">
+          <caret line="29" column="69" lean-forward="true" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
           <folding>
             <element signature="e#121#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assigment2/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="e#22#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
