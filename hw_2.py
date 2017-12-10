@@ -17,40 +17,74 @@ time = 0.4
 
 volume = 0.5     # range [0.0, 1.0]
 fs = 8000      # sampling rate, Hz, must be integer
-duration = 4.0*time   # in seconds, may be float
+duration = 16.0*time   # in seconds, may be float
 #取聖誕歌前四個音節
-#|333-|333-|3212|3---|
+#|333-|333-|3512|3---|
 
 #主音為高頻 LEVEL4
 #1 == 262, 2 == 278, 3 == 294
 f1 = 262.0        # sine frequency, Hz, may be float
-f2 = 278.0
-f3 = 294.0
+f2 = 294.0
+f3 = 330.0
+f5 = 392.0
 f0 = 1.0
 
 samples = 2*np.pi*np.arange(fs*duration)
 
+def setMusic(n, f):
+    n = n * time
+    for i in range(int((n - time) * fs), int(fs * n)):
+        samples[i] = np.sin(samples[i] * f / fs).astype(np.float32)
+
+def setSleep(n):
+    n = n * time
+    for i in range(int(fs * n - fs / sleep), int(fs * n)):
+        samples[i] = np.sin(samples[i] * f0 / fs).astype(np.float32)
+
+setMusic(1,f3)
+setSleep(1)
+
+setMusic(2,f3)
+setSleep(2)
+
+setMusic(3,f3)
+
+setMusic(4,f3)
+setSleep(4)
+
+setMusic(5,f3)
+setSleep(5)
+
+setMusic(6,f3)
+setSleep(6)
+
+setMusic(7,f3)
+
+setMusic(8,f3)
+setSleep(8)
+
+setMusic(9,f3)
+setSleep(9)
+
+setMusic(10,f5)
+setSleep(10)
+
+setMusic(11,f1)
+setSleep(11)
+
+setMusic(12,f2)
+setSleep(12)
+
+setMusic(13,f3)
+
+setMusic(14,f3)
+
+setMusic(15,f3)
+
+setMusic(16,f3)
+setSleep(16)
 
 
-n = 1*time
-for i in range(int((n-time)*fs),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f3 / fs).astype(np.float32)
-for i in range(int(fs*n-fs/sleep),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f0 / fs).astype(np.float32)
-
-n = 2*time
-for i in range(int((n-time)*fs),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f3 / fs).astype(np.float32)
-for i in range(int(fs*n-fs/sleep),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f0 / fs).astype(np.float32)
-
-n = 3*time
-for i in range(int((n-time)*fs),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f3 / fs).astype(np.float32)
-
-n = 4*time
-for i in range(int((n-time)*fs),int(fs*n)):
-    samples[i] = np.sin(samples[i] * f3 / fs).astype(np.float32)
 
 
 newdata = volume*samples.astype(np.float32)
