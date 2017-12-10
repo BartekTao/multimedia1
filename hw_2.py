@@ -147,7 +147,7 @@ setMusic(16,f3)
 setSleep(16)
 
 
-newdata2 = 0.5*samples2.astype(np.float32)
+newdata2 = 0.3*samples2.astype(np.float32)
 
 scipy.io.wavfile.write("sample1.wav",fs, newdata + newdata2)
 #新图像
