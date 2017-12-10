@@ -160,7 +160,7 @@ plt.title("second")
 plt.plot(newdata2)
 
 plt.subplot(3, 1, 3)
-plt.title("second")
+plt.title("all")
 plt.plot(newdata + newdata2)
 
 plt.show()
