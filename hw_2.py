@@ -103,41 +103,57 @@ def setSleep(n):
     for i in range(int(fs * n - fs / sleep), int(fs * n)):
         samples2[i] = np.sin(samples2[i] * f0 / fs).astype(np.float32)
 
+def setStart(n):
+    n = n * time
+    for i in range(int((n - time) * fs), int((n - time) * fs + fs / sleep)):
+        samples2[i] = np.sin(samples2[i] * f0 / fs).astype(np.float32)
+
 setMusic(1,f3)
 setSleep(1)
+setStart(1)
 
 setMusic(2,f3)
 setSleep(2)
+setStart(2)
 
 setMusic(3,f3)
+setStart(3)
 
 setMusic(4,f3)
 setSleep(4)
 
 setMusic(5,f3)
 setSleep(5)
+setStart(5)
 
 setMusic(6,f3)
 setSleep(6)
+setStart(6)
 
 setMusic(7,f3)
+setStart(7)
 
 setMusic(8,f3)
 setSleep(8)
 
 setMusic(9,f3)
 setSleep(9)
+setStart(9)
 
 setMusic(10,f5)
 setSleep(10)
+setStart(10)
 
 setMusic(11,f1)
 setSleep(11)
+setStart(11)
 
 setMusic(12,f2)
 setSleep(12)
+setStart(12)
 
 setMusic(13,f3)
+setStart(13)
 
 setMusic(14,f3)
 
@@ -149,7 +165,7 @@ setSleep(16)
 
 newdata2 = 0.3*samples2.astype(np.float32)
 
-scipy.io.wavfile.write("sample1.wav",fs, newdata + newdata2)
+scipy.io.wavfile.write("sample2.wav",fs, newdata + newdata2)
 #新图像
 plt.subplot(3, 1, 1)
 plt.title("main")
