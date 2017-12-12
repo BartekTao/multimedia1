@@ -29,7 +29,7 @@ try:
     sleep = 15  #休息間隔，越小越久
     time = 0.4  #一拍代表幾秒
 
-    sleep2 = 15 #主音樂與伴奏錯開時間
+    sleep2 = 15 #主音樂與伴奏錯開時間，越小越久
 
     volumeMain = 0.5  # 主音音量 range [0.0, 1.0]
     volumeSecond = 0.3  # 伴奏音量 range [0.0, 1.0]
@@ -65,6 +65,7 @@ try:
         f6 = 440.0
         f7 = 494.0
 
+        #伴奏，LEVEL2
         ff1 = 65.0  # sine frequency, Hz, may be float
         ff2 = 73.0
         ff3 = 82.0
