@@ -4,15 +4,32 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #讀txt
-'''path = input('請輸入文字檔路徑+檔名+副檔名：')
+#path = input('請輸入文字檔路徑+檔名+副檔名：')
+
+numberRange = ('1','2','3','4','5','6','7','-')
 
 try:
-    fileTxt = open(path)
+    number = 0
+    with open('music.txt','r', encoding='utf-8') as f:
+        for mF in f:
+            if mF[0] == "-":
+                print("格式錯誤，第一個音必須為音符(1~7)")
+            for i in range(len(mF)):
+                if mF[i] in numberRange:
+                    number = number + 1
+                else:
+                    print("格式錯誤，範圍1~7與'-'，將自動刪除其餘格式(包括空白)")
+
+    f.close()
+    print(number)
+
 except Exception as e:
-    print("路徑錯誤")'''
-#不使用讀取txt功能，因為音樂有一拍、半拍、三連音...等等，txt較難統一、辨別以上所述的分類
+    print("路徑錯誤")
+
 ############
-sleep = 15
+
+
+'''sleep = 15
 time = 0.4
 
 volume = 0.5     # range [0.0, 1.0]
@@ -179,4 +196,4 @@ plt.subplot(3, 1, 3)
 plt.title("all")
 plt.plot(newdata + newdata2)
 
-plt.show()
+plt.show()'''
