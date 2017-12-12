@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c92f738-a7db-4c39-8fbd-7ad12ec54542" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assigment2/sample2.wav" afterPath="$PROJECT_DIR$/Assigment2/sample2.wav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assigment2/hw_2.py" afterPath="$PROJECT_DIR$/Assigment2/hw_2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assigment2/music.txt" afterPath="$PROJECT_DIR$/Assigment2/music.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,10 +36,14 @@
       <file leaf-file-name="hw_2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assigment2/hw_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3240">
-              <caret line="120" column="34" lean-forward="true" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
+            <state relative-caret-position="195">
+              <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
               <folding>
                 <element signature="e#22#45#0" expanded="true" />
+                <element signature="e#289#594#0" expanded="false" />
+                <element signature="e#1094#1357#0" expanded="false" />
+                <element signature="e#1387#1562#0" expanded="false" />
+                <element signature="e#2837#3064#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -365,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513086858144</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="重新整理">
+      <created>1513101935512</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1513101935512</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -422,7 +431,8 @@
     <MESSAGE value="調整" />
     <MESSAGE value="主音與合弦錯開" />
     <MESSAGE value="恢復讀取檔案" />
-    <option name="LAST_COMMIT_MESSAGE" value="恢復讀取檔案" />
+    <MESSAGE value="重新整理" />
+    <option name="LAST_COMMIT_MESSAGE" value="重新整理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -437,6 +447,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -457,6 +471,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -484,6 +502,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -511,6 +533,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -538,6 +564,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -565,6 +595,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -585,6 +619,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -612,6 +650,10 @@
           <caret line="3" column="33" lean-forward="true" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -649,10 +691,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assigment2/hw_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="120" column="34" lean-forward="true" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
+        <state relative-caret-position="195">
+          <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
+            <element signature="e#289#594#0" expanded="false" />
+            <element signature="e#1094#1357#0" expanded="false" />
+            <element signature="e#1387#1562#0" expanded="false" />
+            <element signature="e#2837#3064#0" expanded="false" />
           </folding>
         </state>
       </provider>
