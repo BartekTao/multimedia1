@@ -6,7 +6,7 @@ import pdb
 def as_array(filepath):
     f = open(filepath, 'r')
     w, h = size = tuple(int(v) for v in next(f).split()[1:3])
-    print(w,h)
+    #print(w,h)
     data_size = w * h * 2
 
     f.seek(0, 2)
@@ -49,17 +49,21 @@ for j in range(int(h /macroblock)):
         tempPjL = p
         tempPiR = p
         tempPjR = p
-        if(i - p < 0):
-            tempPiL = i
-        if(i + p > w):
-            tempPiR = w - i
+        if(i*16 - p < 0):
+            tempPiL = i*16
+        if(i*16 + p > w):
+            tempPiR = w - i*16
 
-        if(j - p < 0):
-            tempPjL = j
-        if (j + p > h):
-            tempPjR = w - i
-        window = i1[i - tempPiL:i + tempPiR+1, j - tempPjL:j + tempPjR+1]
-        '''print(window)
+        if(j*16 - p < 0):
+            tempPjL = j*16
+        if (j*16 + p > h):
+            tempPjR = w - i*16
+        window = i1[i*16 - tempPiL:i*16 + tempPiR+1, j*16 - tempPjL:j*16 + tempPjR+1]
+        print(window)
         print(window.size)
-        pdb.set_trace()'''
+        pdb.set_trace()
+        referenceNUM = (tempPiR + tempPiL + 1 - macroblock + 1) * (tempPjR + tempPjL + 1 - macroblock + 1)
+        #print(referenceNUM)
+        #pdb.set_trace()
+print(window)
 print(count)
