@@ -23,3 +23,4 @@ def as_array(filepath):
     return data
 
 a = as_array('i1.pgm')
+print(a)
