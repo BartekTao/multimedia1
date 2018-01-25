@@ -25,18 +25,41 @@ def as_array(filepath):
     return data
 
 a = as_array('i2.pgm')
-np3 = a.astype('uint8')
+i2 = a.astype('uint8')
+
+b = as_array('i1.pgm')
+i1 = a.astype('uint8')
 
 w = 320
 h = 240
 macroblock = 16
-window = 31
+p = 15
+window = p*2+1
 
 count = 0
 for j in range(int(h /macroblock)):
     for i in range(int(w / macroblock)):
-        target = np3[i*16:16*(i+1),j*16:16*(j+1)]
+        target = i2[i*16:16*(i+1),j*16:16*(j+1)]
         count = count+1
         #print(target)
         #pdb.set_trace()
+
+        ####window = i1[i-15:i+15,j-15:j+15]
+        tempPiL = p
+        tempPjL = p
+        tempPiR = p
+        tempPjR = p
+        if(i - p < 0):
+            tempPiL = i
+        if(i + p > w):
+            tempPiR = w - i
+
+        if(j - p < 0):
+            tempPjL = j
+        if (j + p > h):
+            tempPjR = w - i
+        window = i1[i - tempPiL:i + tempPiR+1, j - tempPjL:j + tempPjR+1]
+        '''print(window)
+        print(window.size)
+        pdb.set_trace()'''
 print(count)
