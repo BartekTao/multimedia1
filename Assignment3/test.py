@@ -69,13 +69,32 @@ for j in range(int(h /macroblock)):
         referenceNUM = (tempPiR + tempPiL + 1 - macroblock + 1) * (tempPjR + tempPjL + 1 - macroblock + 1)
         #print(referenceNUM)
         #pdb.set_trace()
+
+        ####### window原始位置 X0 = x - tempPiL
+        ####### window原始位置 Y0 = y - tempPjL
+        window_X0 = x - tempPiL
+        window_Y0 = y - tempPjL
         for jj in range(windowY-16):
             for ii in range(windowX-16):
                 reference = window[ii:ii+16,jj:jj+16]
-                print(reference.size)
+                reference_X = window_X0 + ii + 8
+                reference_Y = window_Y0 + jj + 8
+                #print(reference.size)
 
-print(window)
+                ####MAD####
+                sum = 0
+                for jjj in range(macroblock):
+                    for iii in range(macroblock):
+                        diff = abs(target[iii][jjj]-reference[iii][jjj])
+                        sum = sum + diff
+                MAD = (1/(macroblock * macroblock)) * sum
+                print(MAD)
+                #pdb.set_trace()
+
+
+#print(window)
+print(target)
 print(reference)
 
-print(tempPiL,tempPiR,tempPjL,tempPjR,windowX,windowY,window.size)
+print(x,y,reference_X,reference_Y,window.size)
 #print(count)
