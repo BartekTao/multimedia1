@@ -49,21 +49,33 @@ for j in range(int(h /macroblock)):
         tempPjL = p
         tempPiR = p
         tempPjR = p
-        if(i*16 - p < 0):
-            tempPiL = i*16
-        if(i*16 + p > w):
-            tempPiR = w - i*16
+        x = i * 16 + 8
+        y = j * 16 + 8
+        if(x - p < 0):
+            tempPiL = x
+        if(x + p > w):
+            tempPiR = w - x
 
-        if(j*16 - p < 0):
-            tempPjL = j*16
-        if (j*16 + p > h):
-            tempPjR = w - i*16
-        window = i1[i*16 - tempPiL:i*16 + tempPiR+1, j*16 - tempPjL:j*16 + tempPjR+1]
-        print(window)
-        print(window.size)
-        pdb.set_trace()
+        if(y - p < 0):
+            tempPjL = y
+        if (y + p > h):
+            tempPjR = h - y
+        windowX = tempPiR+1+ tempPiL
+        windowY = tempPjR+1+ tempPjL
+        window = i1[x - tempPiL:x + tempPiR+1, y - tempPjL:y + tempPjR+1]
+        #print(window)
+        #print(window.size)
+        #pdb.set_trace()
         referenceNUM = (tempPiR + tempPiL + 1 - macroblock + 1) * (tempPjR + tempPjL + 1 - macroblock + 1)
         #print(referenceNUM)
         #pdb.set_trace()
+        for jj in range(windowY-16):
+            for ii in range(windowX-16):
+                reference = window[ii:ii+16,jj:jj+16]
+                print(reference.size)
+
 print(window)
-print(count)
+print(reference)
+
+print(tempPiL,tempPiR,tempPjL,tempPjR,windowX,windowY,window.size)
+#print(count)
