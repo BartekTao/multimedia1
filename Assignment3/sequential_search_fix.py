@@ -49,8 +49,8 @@ for j in range(int(h /macroblock)):
         tempPjL = p
         tempPiR = p
         tempPjR = p
-        x = i * 16 + 8
-        y = j * 16 + 8
+        x = i * 16
+        y = j * 16
         if(x - p < 0):
             tempPiL = x
         if(x + p > w):
@@ -76,43 +76,36 @@ for j in range(int(h /macroblock)):
         window_Y0 = y - tempPjL
 
         min_MAD = 1000000000
-        for jj in range(windowY-16):
-            for ii in range(windowX-16):
-                reference = window[ii:ii+16,jj:jj+16]
-                reference_X = window_X0 + ii + 8
-                reference_Y = window_Y0 + jj + 8
+        for jj in range(windowY):
+            for ii in range(windowX):
+                reference = i1[window_X0+ii:window_X0+ii + macroblock , window_Y0+jj:window_Y0+jj + macroblock]
+                reference_X = window_X0 + ii
+                reference_Y = window_Y0 + jj
                 #print(reference.size)
+                #pdb.set_trace()
 
                 ####MAD####
                 sum = 0
-                for jjj in range(macroblock):
-                    for iii in range(macroblock):
-                        diff = abs(target[iii][jjj]-reference[iii][jjj])
-                        sum = sum + diff
-                MAD = (1/(macroblock * macroblock)) * sum
-                #print(MAD)
-                #print(target)
-                #print(reference)
-                #pdb.set_trace()
-                #print(reference_X,reference_Y,",",x,y)
+                if reference.size == 256:
+                    for jjj in range(macroblock):
+                        for iii in range(macroblock):
+                            diff = abs(target[iii][jjj] - reference[iii][jjj])
+                            sum = sum + diff
+                    MAD = (1 / (macroblock * macroblock)) * sum
+                    # print(MAD)
+                    # print(target)
+                    # print(reference)
+                    # pdb.set_trace()
+                    #print(reference_X,reference_Y,",",x,y)
 
-                if MAD < min_MAD:
-                    min_MAD = MAD
-                    min_X = reference_X
-                    min_Y = reference_Y
-                    minReference = reference
-                    #print(min_X,min_Y)
+                    if MAD < min_MAD:
+                        min_MAD = MAD
+                        min_X = reference_X
+                        min_Y = reference_Y
+                        minReference = reference
+                        # print(min_X,min_Y)
 
-        MV = (min_X-x,min_Y - y)
-        print((x,y),MV)
-        #print(minReference)
-        #print(target)
+        MV = (min_X - x, min_Y - y)
+        print((x, y), MV)
         #pdb.set_trace()
 
-
-#print(window)
-#print(target)
-#print(reference)
-
-#print(x,y,reference_X,reference_Y,window.size)
-#print(count)
