@@ -28,7 +28,7 @@ a = as_array('i2.pgm')
 i2 = a.astype('uint8')
 
 b = as_array('i1.pgm')
-i1 = a.astype('uint8')
+i1 = b.astype('uint8')
 
 w = 320
 h = 240
@@ -74,6 +74,8 @@ for j in range(int(h /macroblock)):
         ####### window原始位置 Y0 = y - tempPjL
         window_X0 = x - tempPiL
         window_Y0 = y - tempPjL
+
+        min_MAD = 1000000000
         for jj in range(windowY-16):
             for ii in range(windowX-16):
                 reference = window[ii:ii+16,jj:jj+16]
@@ -89,12 +91,28 @@ for j in range(int(h /macroblock)):
                         sum = sum + diff
                 MAD = (1/(macroblock * macroblock)) * sum
                 print(MAD)
-                #pdb.set_trace()
+                print(target)
+                print(reference)
+                pdb.set_trace()
+                #print(reference_X,reference_Y,",",x,y)
+
+                if MAD < min_MAD:
+                    min_MAD = MAD
+                    min_X = reference_X
+                    min_Y = reference_Y
+                    minReference = reference
+                    #print(min_X,min_Y)
+
+        MV = (min_X-x,min_Y - y)
+        print(MV)
+        #print(minReference)
+        #print(target)
+        #pdb.set_trace()
 
 
 #print(window)
-print(target)
-print(reference)
+#print(target)
+#print(reference)
 
-print(x,y,reference_X,reference_Y,window.size)
+#print(x,y,reference_X,reference_Y,window.size)
 #print(count)
