@@ -49,6 +49,8 @@ for j in range(int(h /macroblock)):
         tempPjL = p
         tempPiR = p
         tempPjR = p
+        x0 = i * 16
+        y0 = j * 16
         x = i * 16
         y = j * 16
         if(x - p < 0):
@@ -76,37 +78,49 @@ for j in range(int(h /macroblock)):
         window_Y0 = y - tempPjL
 
         min_MAD = 1000000000
-        for jj in range(3):
-            for ii in range(3):
-                reference = i1[window_X0 + ii*8:window_X0 + ii*8 + macroblock, window_Y0 + jj*8:window_Y0 + jj*8 + macroblock]
-                reference_X = window_X0 + ii*8
-                reference_Y = window_Y0 + jj*8
-                #print(reference)
-                #pdb.set_trace()
+        pp = 8
+        while pp >=1:
+            for jj in range(3):
+                for ii in range(3):
+                    #print(window.size)
+                    #reference = window[ii + ii * pp :ii + ii * pp + macroblock ,jj + jj * pp :jj + jj * pp + macroblock ]
+                    reference = i1[x-pp + ii*pp:x-pp + ii*pp + macroblock, y-pp + jj*pp:y-pp + jj*pp + macroblock]
+                    reference_X = x-pp + ii*pp
+                    reference_Y = y-pp + jj*pp
+                    #print(reference_X, reference_Y, ",", x-8 + ii, y-8 + jj)
+                    #print(reference)
+                    #pdb.set_trace()
 
-                ####MAD####
-                sum = 0
-                if reference.size == 256:
-                    for jjj in range(macroblock):
-                        for iii in range(macroblock):
-                            diff = abs(target[iii][jjj] - reference[iii][jjj])
-                            sum = sum + diff
-                    MAD = (1 / (macroblock * macroblock)) * sum
-                    # print(MAD)
-                    # print(target)
-                    # print(reference)
-                    # pdb.set_trace()
-                    # print(reference_X,reference_Y,",",x,y)
+                    ####MAD####
+                    sum = 0
+                    if reference.size == 256:
+                        for jjj in range(macroblock):
+                            for iii in range(macroblock):
+                                diff = abs(target[iii][jjj] - reference[iii][jjj])
+                                sum = sum + diff
+                        MAD = (1 / (macroblock * macroblock)) * sum
+                        # print(MAD)
+                        # print(target)
+                        # print(reference)
+                        # pdb.set_trace()
+                        # print(reference_X,reference_Y,",",x,y)
 
-                    if MAD < min_MAD:
-                        min_MAD = MAD
-                        min_X = reference_X
-                        min_Y = reference_Y
-                        minReference = reference
-                        # print(min_X,min_Y)
+                        if MAD < min_MAD:
+                            min_MAD = MAD
+                            min_X = reference_X
+                            min_Y = reference_Y
+                            minReference = reference
+                            # print(min_X,min_Y)
+            pp = int(pp / 2)
+            x = min_X
+            y = min_Y
+            #print(min_X, min_Y)
+            #MV = (min_X - x0, min_Y - y0)
+            #print((x0, y0), MV)
+            #pdb.set_trace()
 
-        MV = (min_X - x, min_Y - y)
-        print((x, y), MV)
+        MV = (min_X - x0, min_Y - y0)
+        print((x0, y0), MV)
 
 
 
