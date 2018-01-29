@@ -26,6 +26,7 @@ def as_array(filepath):
     return data
 
 a = as_array('i1.pgm')
+print(a)
 
 pyplot.imshow(a, pyplot.cm.gray)
 pyplot.show()

@@ -1,27 +1,27 @@
 import numpy as np
 from matplotlib import pyplot
 from PIL import Image
+from scipy.fftpack import dct,idct
 import pdb
 
 
 def as_array(filepath):
     f = open(filepath, 'r')
-    w, h = size = tuple(int(v) for v in next(f).split()[1:3])
-    #print(w,h)
-    data_size = w * h * 2
+    w, h = tuple(int(v) for v in next(f).split()[1:3])
+    #print(w, h)
 
-    f.seek(0, 2)
-    filesize = f.tell()
-    f.close()
-    i_header_end = filesize - (data_size)
-
-    f = open(filepath, 'rb')
-    f.seek(i_header_end)
+    f = open(filepath, 'r')
+    f.readline()
     buffer = f.read()
+    buffer = buffer.split()
     f.close()
 
     # convert binary data to an array of the right shape
-    data = np.frombuffer(buffer, dtype=np.uint16).reshape((w, h))
+    data = np.array(buffer).astype(np.int64)
+    #print(data)
+
+    data = np.frombuffer(data, dtype=np.int64).reshape((h, w))
+    #print(data)
 
     return data
 
@@ -40,8 +40,8 @@ p = 15
 window = p*2+1
 
 count = 0
-for j in range(int(h /macroblock)):
-    for i in range(int(w / macroblock)):
+for j in range(int(w /macroblock)):
+    for i in range(int(h / macroblock)):
         target = i2[i*16:16*(i+1),j*16:16*(j+1)]
         count = count+1
         #print(target)
@@ -124,10 +124,22 @@ for j in range(int(h /macroblock)):
 
         MV = (min_X - x0, min_Y - y0)
         #print((x0, y0), MV)
-        p_frame[i * 16:16 * (i + 1), j * 16:16 * (j + 1)] = minReference
+        def dct2(block):
+            return dct(dct(block.T, norm='ortho').T, norm='ortho')
+
+        def idct2(block):
+            return idct(idct(block.T, norm='ortho').T, norm='ortho')
+
+
+        quantization = np.round(dct2(target - minReference)/8)
+        #print(quantization)
+        #pdb.set_trace()
+        p_frame[i * 16:16 * (i + 1), j * 16:16 * (j + 1)] = minReference + idct2(quantization*8)
 
 #print(i2)
 #print(p_frame)
+pyplot.imshow(p_frame, pyplot.cm.gray)
+pyplot.show()
 
 
 
