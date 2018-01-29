@@ -1,4 +1,5 @@
 import numpy as np
+from matplotlib import pyplot
 from PIL import Image
 import pdb
 
@@ -29,6 +30,8 @@ i2 = a.astype('uint8')
 
 b = as_array('i1.pgm')
 i1 = b.astype('uint8')
+
+p_frame = b.astype('uint8')
 
 w = 320
 h = 240
@@ -120,7 +123,11 @@ for j in range(int(h /macroblock)):
             #pdb.set_trace()
 
         MV = (min_X - x0, min_Y - y0)
-        print((x0, y0), MV)
+        #print((x0, y0), MV)
+        p_frame[i * 16:16 * (i + 1), j * 16:16 * (j + 1)] = minReference
+
+#print(i2)
+#print(p_frame)
 
 
 

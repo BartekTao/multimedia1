@@ -30,6 +30,8 @@ i2 = a.astype('uint8')
 b = as_array('i1.pgm')
 i1 = b.astype('uint8')
 
+p_frame = b.astype('uint8')
+
 w = 320
 h = 240
 macroblock = 16
@@ -106,6 +108,11 @@ for j in range(int(h /macroblock)):
                         # print(min_X,min_Y)
 
         MV = (min_X - x, min_Y - y)
-        print((x, y), MV)
+        #print((x, y), MV)
         #pdb.set_trace()
+        p_frame[i*16:16*(i+1),j*16:16*(j+1)] = minReference
+
+print(i2)
+print(p_frame)
+
 
