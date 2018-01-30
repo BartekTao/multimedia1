@@ -123,7 +123,7 @@ for j in range(int(w /macroblock)):
             #pdb.set_trace()
 
         MV = (min_X - x0, min_Y - y0)
-        #print((x0, y0), MV)
+        print(str((x0, y0))+">>"+str(MV))
         def dct2(block):
             return dct(dct(block.T, norm='ortho').T, norm='ortho')
 
@@ -140,6 +140,23 @@ for j in range(int(w /macroblock)):
 #print(p_frame)
 pyplot.imshow(p_frame, pyplot.cm.gray)
 pyplot.show()
+
+sumf = 0
+for j in range(w):
+    for i in range(h):
+        f = i2[i][j] * i2[i][j]
+        sumf = sumf + f
+
+sum_f = 0
+for j in range(w):
+    for i in range(h):
+        f = p_frame[i][j] * p_frame[i][j]
+        sum_f = sum_f + f
+snr = sumf/sum_f
+print(snr)
+
+
+
 
 
 

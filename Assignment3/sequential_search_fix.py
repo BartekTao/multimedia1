@@ -109,7 +109,7 @@ for j in range(int(w /macroblock)):
                         # print(min_X,min_Y)
 
         MV = (min_X - x, min_Y - y)
-        #print((x, y), MV)
+        print(str((x, y)) + ">>" + str(MV))
         #pdb.set_trace()
         #print(minReference.size)
         def dct2(block):
@@ -129,4 +129,16 @@ for j in range(int(w /macroblock)):
 pyplot.imshow(p_frame, pyplot.cm.gray)
 pyplot.show()
 
+sumf = 0
+for j in range(w):
+    for i in range(h):
+        f = i2[i][j] * i2[i][j]
+        sumf = sumf + f
 
+sum_f = 0
+for j in range(w):
+    for i in range(h):
+        f = p_frame[i][j] * p_frame[i][j]
+        sum_f = sum_f + f
+snr = sumf/sum_f
+print(snr)

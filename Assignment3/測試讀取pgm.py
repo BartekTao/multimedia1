@@ -20,7 +20,7 @@ def as_array(filepath):
     print(data)
 
     data = np.frombuffer(data, dtype=np.int64).reshape((h, w))
-    print(data)
+    print(data[0].size)
 
 
     return data
