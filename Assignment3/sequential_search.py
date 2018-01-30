@@ -1,26 +1,27 @@
 import numpy as np
 from PIL import Image
+from matplotlib import pyplot
+from scipy.fftpack import dct,idct
 import pdb
 
 
 def as_array(filepath):
     f = open(filepath, 'r')
-    w, h = size = tuple(int(v) for v in next(f).split()[1:3])
-    #print(w,h)
-    data_size = w * h * 2
+    w, h = tuple(int(v) for v in next(f).split()[1:3])
+    #print(w, h)
 
-    f.seek(0, 2)
-    filesize = f.tell()
-    f.close()
-    i_header_end = filesize - (data_size)
-
-    f = open(filepath, 'rb')
-    f.seek(i_header_end)
+    f = open(filepath, 'r')
+    f.readline()
     buffer = f.read()
+    buffer = buffer.split()
     f.close()
 
     # convert binary data to an array of the right shape
-    data = np.frombuffer(buffer, dtype=np.uint16).reshape((w, h))
+    data = np.array(buffer).astype(np.int64)
+    #print(data)
+
+    data = np.frombuffer(data, dtype=np.int64).reshape((h, w))
+    #print(data)
 
     return data
 
@@ -30,6 +31,8 @@ i2 = a.astype('uint8')
 b = as_array('i1.pgm')
 i1 = b.astype('uint8')
 
+p_frame = b.astype('uint8')
+
 w = 320
 h = 240
 macroblock = 16
@@ -37,8 +40,8 @@ p = 15
 window = p*2+1
 
 count = 0
-for j in range(int(h /macroblock)):
-    for i in range(int(w / macroblock)):
+for j in range(int(w /macroblock)):
+    for i in range(int(h / macroblock)):
         target = i2[i*16:16*(i+1),j*16:16*(j+1)]
         count = count+1
         #print(target)
@@ -49,8 +52,8 @@ for j in range(int(h /macroblock)):
         tempPjL = p
         tempPiR = p
         tempPjR = p
-        x = i * 16 + 8
-        y = j * 16 + 8
+        x = i * 16
+        y = j * 16
         if(x - p < 0):
             tempPiL = x
         if(x + p > w):
@@ -76,43 +79,66 @@ for j in range(int(h /macroblock)):
         window_Y0 = y - tempPjL
 
         min_MAD = 1000000000
-        for jj in range(windowY-16):
-            for ii in range(windowX-16):
-                reference = window[ii:ii+16,jj:jj+16]
-                reference_X = window_X0 + ii + 8
-                reference_Y = window_Y0 + jj + 8
+        for jj in range(windowY):
+            for ii in range(windowX):
+                reference = i1[window_X0+ii:window_X0+ii + macroblock , window_Y0+jj:window_Y0+jj + macroblock]
+                reference_X = window_X0 + ii
+                reference_Y = window_Y0 + jj
                 #print(reference.size)
+                #pdb.set_trace()
 
                 ####MAD####
                 sum = 0
-                for jjj in range(macroblock):
-                    for iii in range(macroblock):
-                        diff = abs(target[iii][jjj]-reference[iii][jjj])
-                        sum = sum + diff
-                MAD = (1/(macroblock * macroblock)) * sum
-                #print(MAD)
-                #print(target)
-                #print(reference)
-                #pdb.set_trace()
-                #print(reference_X,reference_Y,",",x,y)
+                if reference.size == 256:
+                    for jjj in range(macroblock):
+                        for iii in range(macroblock):
+                            diff = abs(target[iii][jjj] - reference[iii][jjj])
+                            sum = sum + diff
+                    MAD = (1 / (macroblock * macroblock)) * sum
+                    # print(MAD)
+                    # print(target)
+                    # print(reference)
+                    # pdb.set_trace()
+                    #print(reference_X,reference_Y,",",x,y)
 
-                if MAD < min_MAD:
-                    min_MAD = MAD
-                    min_X = reference_X
-                    min_Y = reference_Y
-                    minReference = reference
-                    #print(min_X,min_Y)
+                    if MAD < min_MAD:
+                        min_MAD = MAD
+                        min_X = reference_X
+                        min_Y = reference_Y
+                        minReference = reference
+                        # print(min_X,min_Y)
 
-        MV = (min_X-x,min_Y - y)
-        print((x,y),MV)
-        #print(minReference)
-        #print(target)
+        MV = (min_X - x, min_Y - y)
+        print(str((x, y)) + ">>" + str(MV))
         #pdb.set_trace()
+        #print(minReference.size)
+        def dct2(block):
+            return dct(dct(block.T, norm='ortho').T, norm='ortho')
+
+        def idct2(block):
+            return idct(idct(block.T, norm='ortho').T, norm='ortho')
 
 
-#print(window)
-#print(target)
-#print(reference)
+        quantization = np.round(dct2(target - minReference)/8)
+        #print(quantization)
+        #pdb.set_trace()
+        p_frame[i * 16:16 * (i + 1), j * 16:16 * (j + 1)] = minReference + idct2(quantization*8)
 
-#print(x,y,reference_X,reference_Y,window.size)
-#print(count)
+
+
+pyplot.imshow(p_frame, pyplot.cm.gray)
+pyplot.show()
+
+sumf = 0
+for j in range(w):
+    for i in range(h):
+        f = i2[i][j] * i2[i][j]
+        sumf = sumf + f
+
+sum_f = 0
+for j in range(w):
+    for i in range(h):
+        f = p_frame[i][j] * p_frame[i][j]
+        sum_f = sum_f + f
+snr = sumf/sum_f
+print(snr)
